@@ -111,24 +111,24 @@ request({
 });
 
 
-//EDIT POST
+// UPDATE ROUTES
 router.get('/update/:id', function(req, res, next) {
 
+  //make a post request to our database
   request({
   uri: "http://localhost:8000/posts/" + req.params.id,
   method: "GET",
   }, function(error, response, body) {
       console.log(JSON.parse(body));
-
+      //send a response message
       res.render('update', {message: false, posts: JSON.parse(body)});
   });
-
-});
-
-router.post('/update/:id', function(req, res, next) {
-
+ 
+ });
+ 
+ router.post('/update/:id', function(req, res, next) {
   request({
-  uri: "http://localhost:8000/posts/"+ req.params.id,
+    uri: "http://localhost:8000/posts/" + req.params.id,
   method: "PATCH",
   form: {
       title: req.body.title,
@@ -136,10 +136,11 @@ router.post('/update/:id', function(req, res, next) {
       author: req.body.author
   }
   }, function(error, response, body) {
-      
-      res.render('update', {message: 'Successfully Added.', posts: JSON.parse(body)});
+      // console.log(body);
+      //send a response message
+      res.render('update', {message: 'Successfully Changed.', posts: JSON.parse(body)});
   });
-})
+ });
 
 
 module.exports = router;

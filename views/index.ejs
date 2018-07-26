@@ -69,11 +69,11 @@ and open the template in the editor.
                     </button>
                     
                     <button>
-                        <a href="/update/<%= posts.id %>">Update</a>
+                        <a href="/edit/<%= posts[0].id %>">Edit</a>
                     </button>
 
                     <button>
-                        <a href="/delete/<%= posts.id %>">Delete</a>
+                        <a href="/delete/<%= posts[0].id %>">Delete</a>
                     </button>
 
 
@@ -112,7 +112,7 @@ and open the template in the editor.
                                 <button>
                                 <a href="/update/<%= post.id %>">Edit</a>
                                 </button>
-                                <button>
+                                <button id="btnDelete">
                                 <a href="/delete/<%= post.id %>">Delete</a>
                                 </button>
 
@@ -124,6 +124,15 @@ and open the template in the editor.
             </div>
         </div>
     </fieldset>
+
+
+    <script>
+        $(document).ready(function(){
+            $('#btnDelete').on('click', function(){
+                alert("Are you sure you want to delete post?")
+            });
+        });
+    </script>
 </body>
 
 </html>
